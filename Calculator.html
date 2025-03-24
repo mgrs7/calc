@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            text-align: center;
+            margin-top: 6rem;
+            background-color: lightblue;
+        }
+        h1{
+            color: white;
+        }
+        .calc{
+            background-color: rgb(41, 41, 43);
+            box-sizing: border-box;
+            padding: 20px;
+            box-shadow: 0 0 10px rgb(58, 57, 57);
+            border-radius: 10px;
+            width: 380px;
+            margin: auto;
+        }
+        button{
+            background-color: rgb(70, 69, 69);
+            color: white;
+            border: none;
+            margin: 1px 1px;
+            border-radius: 10px;
+            height: 55px;
+            width: 83px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(63, 62, 62);
+        }
+        input{
+            padding: 25px 0;
+            width: 335px;
+            margin-bottom: 7px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+        #equals{
+            background-color: rgb(248, 155, 217);
+            color: black;
+        }
+        #equals:hover{
+            background-color: (243, 167, 224);
+        }
+    </style>
+</head>
+<body>
+    <div class="calc">
+    <table>
+        <thead>
+            <h1>CALCULATOR</h1>
+        </thead>
+        <tbody>
+            <tr>
+                <input type="text" id="display" disabled>
+            </tr>
+            <br>
+            <tr>
+                <button id="clear" onclick="clearDisplay()">C</button>
+                <button onclick="appendToDisplay('%')">%</button>
+                <button onclick="backSpace( )">&#9003;</button>
+                <button onclick="appendToDisplay('/')">/</button>
+            </tr>
+            <br>
+            <tr>
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button onclick="appendToDisplay('*')">x</button>
+            </tr>
+            <br>
+            <tr>
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button onclick="appendToDisplay('-')">-</button>
+            </tr>
+            <br>
+            <tr>
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button onclick="appendToDisplay('+')">+</button>
+            </tr>
+            <br>
+            <tr>
+                <button onclick="appendToDisplay('00')">00</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="appendToDisplay('.')">.</button>
+                <button id="equals" onclick="calculateResult( )">=</button>
+            </tr>
+            <br>
+        </tbody>
+    </table>
+</div>
+    <script>
+        function appendToDisplay(value) {
+            const display = document.getElementById('display');
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+        
+        function backSpace() {
+            const display = document.getElementById('display');
+            display.value = display.value.slice(0, -1 || '0');
+        }
+
+        function calculateResult() {
+            var expression = document.getElementById('display').value;
+            var result;
+            try{
+                result = eval(expression);
+                document.getElementById('display').value = result;
+            }catch (error){
+                document.getElementById('display').value = 'error';
+
+            }
+        }
+    </script>
+</body>
+</html>
